@@ -1,0 +1,12 @@
+---
+builds:
+- binary: circleci-config-merge
+  main: cmd/circleci-config-merge/main.go
+  env:
+  - CGO_ENABLED=0
+  goos:
+  - windows
+  - darwin
+  - linux
+  goarch:
+  - amd64
