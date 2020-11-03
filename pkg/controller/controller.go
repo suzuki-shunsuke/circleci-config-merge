@@ -46,6 +46,9 @@ func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error {
 				wf.Jobs = arr
 			default:
 				if key, ok := k.(string); ok {
+					if wf.others == nil {
+						wf.others = map[string]interface{}{}
+					}
 					wf.others[key] = v
 				} else {
 					return fmt.Errorf("workflow's key must be a string: workflow: %s: %+v", workflowName, k)
