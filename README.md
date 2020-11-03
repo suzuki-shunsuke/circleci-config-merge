@@ -28,6 +28,10 @@ $ circleci-config-merge --version
 circleci-config-merge version 0.1.0
 ```
 
+## Example
+
+Please see [examples](examples).
+
 ## How to use
 
 ```
@@ -44,10 +48,6 @@ In CI, we should test whether `.circleci/config.yml` and the result of `circleci
 The split file format is same as [.circleci/config.yml](https://circleci.com/docs/2.0/configuration-reference/).
 
 ## Merge Rule
-
-Coming soon.
-
-## Example
 
 Coming soon.
 
