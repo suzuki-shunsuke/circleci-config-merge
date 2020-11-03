@@ -61,7 +61,7 @@ func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	return nil
 }
 
-func (wfs *Workflows) MarshalYAML() (interface{}, error) {
+func (wfs Workflows) MarshalYAML() (interface{}, error) {
 	m := make(map[string]interface{}, len(wfs.Workflows))
 	for k, v := range wfs.Workflows {
 		m[k] = v
@@ -78,7 +78,7 @@ type Workflow struct {
 	others   map[string]interface{} `yaml:",omitempty"`
 }
 
-func (wf *Workflow) MarshalYAML() (interface{}, error) {
+func (wf Workflow) MarshalYAML() (interface{}, error) {
 	m := map[string]interface{}{}
 	for k, v := range wf.others {
 		m[k] = v
@@ -102,7 +102,7 @@ type Config struct {
 	others    map[string]interface{}
 }
 
-func (cfg *Config) MarshalYAML() (interface{}, error) {
+func (cfg Config) MarshalYAML() (interface{}, error) {
 	m := map[string]interface{}{}
 	for k, v := range cfg.others {
 		m[k] = v
