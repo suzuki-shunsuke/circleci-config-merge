@@ -1,3 +1,5 @@
 dist/*
 .code-climate
 .git-rm-branch.yml
+# install cc-test-reporter in CI
+bin/*
