@@ -25,11 +25,7 @@ func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	wfMap := map[string]Workflow{}
 	for workflowName, v := range m {
 		if workflowName == "version" {
-			ver, ok := v.(string)
-			if !ok {
-				return fmt.Errorf("workflow version must be string: %+v", ver)
-			}
-			wfs.Version = ver
+			wfs.Version = v
 			continue
 		}
 		wf := Workflow{}
