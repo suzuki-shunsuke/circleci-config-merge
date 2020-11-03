@@ -1,0 +1,3 @@
+dist/*
+.code-climate
+.git-rm-branch.yml
