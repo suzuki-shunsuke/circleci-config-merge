@@ -13,7 +13,7 @@ type Params struct {
 }
 
 type Workflows struct {
-	Version   string              `yaml:",omitempty"`
+	Version   interface{}         `yaml:",omitempty"`
 	Workflows map[string]Workflow `yaml:",omitempty"`
 }
 
@@ -66,7 +66,7 @@ func (wfs *Workflows) MarshalYAML() (interface{}, error) {
 	for k, v := range wfs.Workflows {
 		m[k] = v
 	}
-	if wfs.Version != "" {
+	if wfs.Version != nil {
 		m["version"] = wfs.Version
 	}
 	return m, nil
@@ -93,7 +93,7 @@ func (wf *Workflow) MarshalYAML() (interface{}, error) {
 }
 
 type Config struct {
-	Version   string                 `yaml:",omitempty"`
+	Version   interface{}            `yaml:",omitempty"`
 	Orbs      map[string]interface{} `yaml:",omitempty"`
 	Workflows Workflows
 	Jobs      map[string]interface{} `yaml:",omitempty"`
@@ -107,7 +107,7 @@ func (cfg *Config) MarshalYAML() (interface{}, error) {
 	for k, v := range cfg.others {
 		m[k] = v
 	}
-	if cfg.Version != "" {
+	if cfg.Version != nil {
 		m["version"] = cfg.Version
 	}
 	if cfg.Orbs != nil {
@@ -157,7 +157,7 @@ func (ctrl Controller) mergeMap(base, child map[string]interface{}) map[string]i
 }
 
 func (ctrl Controller) mergeWorkflows(base, child Workflows) Workflows {
-	if child.Version != "" {
+	if child.Version != nil {
 		base.Version = child.Version
 	}
 	for k, childWorkflow := range child.Workflows {
@@ -182,7 +182,7 @@ func (ctrl Controller) mergeWorkflows(base, child Workflows) Workflows {
 }
 
 func (ctrl Controller) mergeConfig(base, child Config) Config {
-	if child.Version != "" {
+	if child.Version != nil {
 		base.Version = child.Version
 	}
 	base.Orbs = ctrl.mergeMap(base.Orbs, child.Orbs)
