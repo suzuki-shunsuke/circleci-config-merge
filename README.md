@@ -8,6 +8,10 @@
 
 Generate .circleci/config.yml by merging multiple files
 
+## Blog
+
+https://dev.to/suzukishunsuke/splitting-circleci-config-yml-10gk
+
 ## Motivation
 
 Our monivation is to split a huge .circleci/config.yml per service.
@@ -30,7 +34,7 @@ circleci-config-merge version 0.1.0
 
 ## Example
 
-Please see [examples](examples).
+Please see [examples](examples) and [example-cirleci-config-merge](https://github.com/suzuki-shunsuke/example-circleci-config-merge).
 
 ## How to use
 
@@ -41,7 +45,8 @@ $ circleci-config-merge merge <file> [<file> ...] > .circleci/config.yml
 ## How to test in CI
 
 In CI, we should test whether `.circleci/config.yml` and the result of `circleci-config-merge merge` is equal as YAML.
-`circleci-config-merge` doesn't provide the feature to compare YAML, so please use the other tool like [yamldiff](https://github.com/sahilm/yamldiff).
+`circleci-config-merge` doesn't provide the feature to compare YAML, so please use the other tool like [dyff](https://github.com/homeport/dyff).
+Please see the example [suzuki-shunsuke/example-circleci-config-merge](https://github.com/suzuki-shunsuke/example-circleci-config-merge) as a reference to split .circleci/config.yml and setup CI.
 
 ## Split File Format
 
