@@ -250,7 +250,7 @@ func (ctrl Controller) Run(ctx context.Context, params Params) error {
 	for filePath := range params.Files {
 		m, err := ctrl.readFile(filePath)
 		if err != nil {
-			return fmt.Errorf("read a file"+filePath+": %w", err)
+			return fmt.Errorf("read a file "+filePath+": %w", err)
 		}
 		cfg = ctrl.mergeConfig(cfg, m)
 	}
