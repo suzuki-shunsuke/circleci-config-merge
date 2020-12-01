@@ -7,6 +7,7 @@ import (
 )
 
 func TestController_mergeMap(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		exp   map[string]interface{}
@@ -31,6 +32,7 @@ func TestController_mergeMap(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			m := ctrl.mergeMap(d.base, d.child)
 			require.Equal(t, d.exp, m)
 		})
@@ -38,6 +40,7 @@ func TestController_mergeMap(t *testing.T) {
 }
 
 func TestController_mergeWorkflows(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		exp   Workflows
@@ -82,6 +85,7 @@ func TestController_mergeWorkflows(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			m := ctrl.mergeWorkflows(d.base, d.child)
 			require.Equal(t, d.exp, m)
 		})
@@ -89,6 +93,7 @@ func TestController_mergeWorkflows(t *testing.T) {
 }
 
 func TestController_mergeConfig(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		exp   Config
@@ -140,6 +145,7 @@ func TestController_mergeConfig(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			m := ctrl.mergeConfig(d.base, d.child)
 			require.Equal(t, d.exp, m)
 		})
@@ -147,6 +153,7 @@ func TestController_mergeConfig(t *testing.T) {
 }
 
 func Test_getJobName(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		exp   string
@@ -173,6 +180,7 @@ func Test_getJobName(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			name, err := getJobName(d.job)
 			if d.isErr {
 				require.NotNil(t, err)
@@ -185,6 +193,7 @@ func Test_getJobName(t *testing.T) {
 }
 
 func Test_sortJobs(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		exp   []interface{}
@@ -229,6 +238,7 @@ func Test_sortJobs(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			jobs, err := sortJobs(d.jobs)
 			if d.isErr {
 				require.NotNil(t, err)
