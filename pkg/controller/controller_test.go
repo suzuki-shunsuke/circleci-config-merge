@@ -9,6 +9,7 @@ import (
 )
 
 func TestWorkflows_UnmasharlYAML(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		exp   controller.Workflows
@@ -38,6 +39,7 @@ build:
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			wfs := controller.Workflows{}
 			err := yaml.Unmarshal(d.yaml, &wfs)
 			if d.isErr {
@@ -51,6 +53,7 @@ build:
 }
 
 func TestWorkflows_MasharlYAML(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		wfs   controller.Workflows
@@ -82,6 +85,7 @@ func TestWorkflows_MasharlYAML(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			b, err := d.wfs.MarshalYAML()
 			if d.isErr {
 				require.NotNil(t, err)
@@ -94,6 +98,7 @@ func TestWorkflows_MasharlYAML(t *testing.T) {
 }
 
 func TestWorkflow_MasharlYAML(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		wf    controller.Workflow
@@ -117,6 +122,7 @@ func TestWorkflow_MasharlYAML(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			b, err := d.wf.MarshalYAML()
 			if d.isErr {
 				require.NotNil(t, err)
@@ -130,6 +136,7 @@ func TestWorkflow_MasharlYAML(t *testing.T) {
 
 //nolint:funlen
 func TestConfig_MasharlYAML(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		cfg   controller.Config
@@ -195,6 +202,7 @@ func TestConfig_MasharlYAML(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			b, err := d.cfg.MarshalYAML()
 			if d.isErr {
 				require.NotNil(t, err)
