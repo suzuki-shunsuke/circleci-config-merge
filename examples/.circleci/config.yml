@@ -22,10 +22,10 @@ commands:
 executors:
   bar:
     docker:
-    - image: alpine:3.13.5
+    - image: alpine:3.14.2
   foo:
     docker:
-    - image: alpine:3.13.5
+    - image: alpine:3.14.2
 jobs:
   bar:
     executor: bar
