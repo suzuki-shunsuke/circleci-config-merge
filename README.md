@@ -14,7 +14,7 @@ https://dev.to/suzukishunsuke/splitting-circleci-config-yml-10gk
 
 ## Motivation
 
-Our monivation is to split a huge .circleci/config.yml per service.
+Our motivation is to split a huge .circleci/config.yml per service.
 We have a [monorepo](https://en.wikipedia.org/wiki/Monorepo) where many services are managed.
 `.circleci/config.yml` of this repository has over 6000 lines, and it's hard to maintain the file.
 
