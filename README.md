@@ -4,7 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b34ffd9a1198b2952d46/test_coverage)](https://codeclimate.com/github/suzuki-shunsuke/circleci-config-merge/test_coverage)
 [![Go Report Card](https://goreportcard.com/badge/github.com/suzuki-shunsuke/circleci-config-merge)](https://goreportcard.com/report/github.com/suzuki-shunsuke/circleci-config-merge)
 [![GitHub last commit](https://img.shields.io/github/last-commit/suzuki-shunsuke/circleci-config-merge.svg)](https://github.com/suzuki-shunsuke/circleci-config-merge)
-[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/suzuki-shunsuke/circleci-config-merge/master/LICENSE)
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/suzuki-shunsuke/circleci-config-merge/main/LICENSE)
 
 Generate .circleci/config.yml by merging multiple files
 
