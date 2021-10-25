@@ -4,21 +4,31 @@ import (
 	"context"
 	"io"
 
-	"github.com/suzuki-shunsuke/circleci-config-merge/pkg/constant"
 	"github.com/urfave/cli/v2"
 )
 
+type LDFlags struct {
+	Version string
+	Commit  string
+	Date    string
+}
+
+func (flags *LDFlags) AppVersion() string {
+	return flags.Version + " (" + flags.Commit + ")"
+}
+
 type Runner struct {
-	Stdin  io.Reader
-	Stdout io.Writer
-	Stderr io.Writer
+	Stdin   io.Reader
+	Stdout  io.Writer
+	Stderr  io.Writer
+	LDFlags *LDFlags
 }
 
 func (runner Runner) Run(ctx context.Context, args ...string) error {
 	app := cli.App{
 		Name:    "circleci-config-merge",
 		Usage:   "generate CircleCI configuration file by merging multiple files. https://github.com/suzuki-shunsuke/circleci-config-merge",
-		Version: constant.Version,
+		Version: runner.LDFlags.AppVersion(),
 		Commands: []*cli.Command{
 			{
 				Name:   "merge",
