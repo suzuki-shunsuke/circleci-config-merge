@@ -25,7 +25,12 @@ And we want to merge the list of workflow's jobs.
 
 ## Install
 
-Download from [GitHub Releases](https://github.com/suzuki-shunsuke/circleci-config-merge/releases)
+Download from [GitHub Releases](https://github.com/suzuki-shunsuke/circleci-config-merge/releases).
+You can install circleci-config-merge with [Homebrew](https://brew.sh/) too.
+
+```
+$ brew install suzuki-shunsuke/circleci-config-merge/circleci-config-merge
+```
 
 ```
 $ circleci-config-merge --version
