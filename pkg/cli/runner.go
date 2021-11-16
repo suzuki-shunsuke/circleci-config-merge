@@ -39,5 +39,5 @@ func (runner Runner) Run(ctx context.Context, args ...string) error {
 		},
 	}
 
-	return app.RunContext(ctx, args)
+	return app.RunContext(ctx, args) //nolint:wrapcheck
 }

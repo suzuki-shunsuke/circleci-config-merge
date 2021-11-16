@@ -31,5 +31,5 @@ func core() error {
 	}
 	ctx, cancel := context.WithCancel(context.Background())
 	go signal.Handle(os.Stderr, cancel)
-	return runner.Run(ctx, os.Args...)
+	return runner.Run(ctx, os.Args...) //nolint:wrapcheck
 }
