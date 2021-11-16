@@ -27,5 +27,5 @@ func (runner *Runner) action(c *cli.Context) error {
 		return fmt.Errorf("initialize a controller: %w", err)
 	}
 
-	return ctrl.Run(c.Context, params) //nolint:wrapcheck
+	return ctrl.Run(c.Context, &params) //nolint:wrapcheck
 }

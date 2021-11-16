@@ -185,17 +185,16 @@ func New(ctx context.Context, params Params) (Controller, Params, error) {
 	}, params, nil
 }
 
-func readFile(filePath string) (Config, error) {
+func readFile(filePath string, cfg *Config) error {
 	file, err := os.Open(filePath)
 	if err != nil {
-		return Config{}, fmt.Errorf("open a file "+filePath+": %w", err)
+		return fmt.Errorf("open a file "+filePath+": %w", err)
 	}
 	defer file.Close()
-	m := Config{}
-	if err := yaml.NewDecoder(file).Decode(&m); err != nil {
-		return m, fmt.Errorf("parse a file as YAML "+filePath+": %w", err)
+	if err := yaml.NewDecoder(file).Decode(cfg); err != nil {
+		return fmt.Errorf("parse a file as YAML "+filePath+": %w", err)
 	}
-	return m, nil
+	return nil
 }
 
 func mergeMap(base, child map[string]interface{}) map[string]interface{} {
@@ -245,14 +244,14 @@ func mergeConfig(base, child Config) Config {
 	return base
 }
 
-func (ctrl *Controller) Run(ctx context.Context, params Params) error {
+func (ctrl *Controller) Run(ctx context.Context, params *Params) error {
 	cfg := Config{}
 	for filePath := range params.Files {
-		m, err := readFile(filePath)
-		if err != nil {
+		child := Config{}
+		if err := readFile(filePath, &child); err != nil {
 			return fmt.Errorf("read a file "+filePath+": %w", err)
 		}
-		cfg = mergeConfig(cfg, m)
+		cfg = mergeConfig(cfg, child)
 	}
 	for k, workflow := range cfg.Workflows.Workflows {
 		jobs, err := sortJobs(workflow.Jobs)
