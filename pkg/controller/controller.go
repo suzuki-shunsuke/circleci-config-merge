@@ -18,7 +18,7 @@ type Workflows struct {
 	Workflows map[string]Workflow `yaml:",omitempty"`
 }
 
-func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error {
+func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error { //nolint:cyclop
 	m := map[string]interface{}{}
 	if err := unmarshal(&m); err != nil {
 		return err
