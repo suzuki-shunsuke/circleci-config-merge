@@ -7,7 +7,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func (runner Runner) setCLIArg(c *cli.Context, params controller.Params) controller.Params {
+func (runner *Runner) setCLIArg(c *cli.Context, params controller.Params) controller.Params {
 	arr := c.Args().Slice()
 	args := make(map[string]struct{}, len(arr))
 	for _, a := range arr {
@@ -17,7 +17,7 @@ func (runner Runner) setCLIArg(c *cli.Context, params controller.Params) control
 	return params
 }
 
-func (runner Runner) action(c *cli.Context) error {
+func (runner *Runner) action(c *cli.Context) error {
 	// files...
 	params := controller.Params{}
 	params = runner.setCLIArg(c, params)

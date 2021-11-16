@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestController_mergeMap(t *testing.T) {
+func Test_mergeMap(t *testing.T) {
 	t.Parallel()
 	data := []struct {
 		title string
@@ -28,18 +28,17 @@ func TestController_mergeMap(t *testing.T) {
 			},
 		},
 	}
-	ctrl := Controller{}
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
-			m := ctrl.mergeMap(d.base, d.child)
+			m := mergeMap(d.base, d.child)
 			require.Equal(t, d.exp, m)
 		})
 	}
 }
 
-func TestController_mergeWorkflows(t *testing.T) {
+func Test_mergeWorkflows(t *testing.T) {
 	t.Parallel()
 	data := []struct {
 		title string
@@ -81,18 +80,17 @@ func TestController_mergeWorkflows(t *testing.T) {
 			},
 		},
 	}
-	ctrl := Controller{}
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
-			m := ctrl.mergeWorkflows(d.base, d.child)
+			m := mergeWorkflows(d.base, d.child)
 			require.Equal(t, d.exp, m)
 		})
 	}
 }
 
-func TestController_mergeConfig(t *testing.T) {
+func Test_mergeConfig(t *testing.T) {
 	t.Parallel()
 	data := []struct {
 		title string
@@ -141,12 +139,11 @@ func TestController_mergeConfig(t *testing.T) {
 			},
 		},
 	}
-	ctrl := Controller{}
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
-			m := ctrl.mergeConfig(d.base, d.child)
+			m := mergeConfig(d.base, d.child)
 			require.Equal(t, d.exp, m)
 		})
 	}

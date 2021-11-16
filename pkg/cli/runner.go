@@ -24,7 +24,7 @@ type Runner struct {
 	LDFlags *LDFlags
 }
 
-func (runner Runner) Run(ctx context.Context, args ...string) error {
+func (runner *Runner) Run(ctx context.Context, args ...string) error {
 	app := cli.App{
 		Name:    "circleci-config-merge",
 		Usage:   "generate CircleCI configuration file by merging multiple files. https://github.com/suzuki-shunsuke/circleci-config-merge",
