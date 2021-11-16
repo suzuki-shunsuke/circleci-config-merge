@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/sirupsen/logrus"
 	"github.com/suzuki-shunsuke/circleci-config-merge/pkg/cli"
-	"github.com/suzuki-shunsuke/circleci-config-merge/pkg/signal"
 )
 
 var (
@@ -29,7 +30,7 @@ func core() error {
 			Date:    date,
 		},
 	}
-	ctx, cancel := context.WithCancel(context.Background())
-	go signal.Handle(os.Stderr, cancel)
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
 	return runner.Run(ctx, os.Args...) //nolint:wrapcheck
 }
