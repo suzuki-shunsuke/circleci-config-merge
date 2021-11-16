@@ -61,7 +61,7 @@ func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error { /
 	return nil
 }
 
-func (wfs Workflows) MarshalYAML() (interface{}, error) {
+func (wfs *Workflows) MarshalYAML() (interface{}, error) {
 	m := make(map[string]interface{}, len(wfs.Workflows))
 	for k, v := range wfs.Workflows {
 		m[k] = v
@@ -130,7 +130,7 @@ func sortJobs(jobs []interface{}) ([]interface{}, error) {
 	return arr, nil
 }
 
-func (wf Workflow) MarshalYAML() (interface{}, error) {
+func (wf *Workflow) MarshalYAML() (interface{}, error) {
 	m := map[string]interface{}{}
 	for k, v := range wf.others {
 		m[k] = v
@@ -154,7 +154,7 @@ type Config struct {
 	others    map[string]interface{}
 }
 
-func (cfg Config) MarshalYAML() (interface{}, error) {
+func (cfg *Config) MarshalYAML() (interface{}, error) {
 	m := map[string]interface{}{}
 	for k, v := range cfg.others {
 		m[k] = v
@@ -185,20 +185,19 @@ func New(ctx context.Context, params Params) (Controller, Params, error) {
 	}, params, nil
 }
 
-func (ctrl Controller) readFile(filePath string) (Config, error) {
+func readFile(filePath string, cfg *Config) error {
 	file, err := os.Open(filePath)
 	if err != nil {
-		return Config{}, fmt.Errorf("open a file "+filePath+": %w", err)
+		return fmt.Errorf("open a file "+filePath+": %w", err)
 	}
 	defer file.Close()
-	m := Config{}
-	if err := yaml.NewDecoder(file).Decode(&m); err != nil {
-		return m, fmt.Errorf("parse a file as YAML "+filePath+": %w", err)
+	if err := yaml.NewDecoder(file).Decode(cfg); err != nil {
+		return fmt.Errorf("parse a file as YAML "+filePath+": %w", err)
 	}
-	return m, nil
+	return nil
 }
 
-func (ctrl Controller) mergeMap(base, child map[string]interface{}) map[string]interface{} {
+func mergeMap(base, child map[string]interface{}) map[string]interface{} {
 	if base == nil {
 		return child
 	}
@@ -208,7 +207,7 @@ func (ctrl Controller) mergeMap(base, child map[string]interface{}) map[string]i
 	return base
 }
 
-func (ctrl Controller) mergeWorkflows(base, child Workflows) Workflows {
+func mergeWorkflows(base, child Workflows) Workflows {
 	if child.Version != nil {
 		base.Version = child.Version
 	}
@@ -218,7 +217,7 @@ func (ctrl Controller) mergeWorkflows(base, child Workflows) Workflows {
 			if childWorkflow.Triggers != nil {
 				baseWorkflow.Triggers = childWorkflow.Triggers
 			}
-			baseWorkflow.others = ctrl.mergeMap(baseWorkflow.others, childWorkflow.others)
+			baseWorkflow.others = mergeMap(baseWorkflow.others, childWorkflow.others)
 			base.Workflows[k] = baseWorkflow
 		} else {
 			if base.Workflows == nil {
@@ -233,26 +232,26 @@ func (ctrl Controller) mergeWorkflows(base, child Workflows) Workflows {
 	return base
 }
 
-func (ctrl Controller) mergeConfig(base, child Config) Config {
+func mergeConfig(base, child Config) Config {
 	if child.Version != nil {
 		base.Version = child.Version
 	}
-	base.Orbs = ctrl.mergeMap(base.Orbs, child.Orbs)
-	base.Workflows = ctrl.mergeWorkflows(base.Workflows, child.Workflows)
-	base.Jobs = ctrl.mergeMap(base.Jobs, child.Jobs)
-	base.Commands = ctrl.mergeMap(base.Commands, child.Commands)
-	base.Executors = ctrl.mergeMap(base.Executors, child.Executors)
+	base.Orbs = mergeMap(base.Orbs, child.Orbs)
+	base.Workflows = mergeWorkflows(base.Workflows, child.Workflows)
+	base.Jobs = mergeMap(base.Jobs, child.Jobs)
+	base.Commands = mergeMap(base.Commands, child.Commands)
+	base.Executors = mergeMap(base.Executors, child.Executors)
 	return base
 }
 
-func (ctrl Controller) Run(ctx context.Context, params Params) error {
+func (ctrl *Controller) Run(ctx context.Context, params *Params) error {
 	cfg := Config{}
 	for filePath := range params.Files {
-		m, err := ctrl.readFile(filePath)
-		if err != nil {
+		child := Config{}
+		if err := readFile(filePath, &child); err != nil {
 			return fmt.Errorf("read a file "+filePath+": %w", err)
 		}
-		cfg = ctrl.mergeConfig(cfg, m)
+		cfg = mergeConfig(cfg, child)
 	}
 	for k, workflow := range cfg.Workflows.Workflows {
 		jobs, err := sortJobs(workflow.Jobs)
