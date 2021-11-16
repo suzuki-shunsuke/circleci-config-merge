@@ -145,13 +145,14 @@ func (wf *Workflow) MarshalYAML() (interface{}, error) {
 }
 
 type Config struct {
-	Version   interface{}            `yaml:",omitempty"`
-	Orbs      map[string]interface{} `yaml:",omitempty"`
-	Workflows Workflows
-	Jobs      map[string]interface{} `yaml:",omitempty"`
-	Commands  map[string]interface{} `yaml:",omitempty"`
-	Executors map[string]interface{} `yaml:",omitempty"`
-	others    map[string]interface{}
+	Version    interface{}            `yaml:",omitempty"`
+	Orbs       map[string]interface{} `yaml:",omitempty"`
+	Workflows  Workflows
+	Jobs       map[string]interface{} `yaml:",omitempty"`
+	Commands   map[string]interface{} `yaml:",omitempty"`
+	Executors  map[string]interface{} `yaml:",omitempty"`
+	Parameters map[string]interface{} `yaml:",omitempty"`
+	others     map[string]interface{}
 }
 
 func (cfg *Config) MarshalYAML() (interface{}, error) {
@@ -174,6 +175,9 @@ func (cfg *Config) MarshalYAML() (interface{}, error) {
 	}
 	if cfg.Executors != nil {
 		m["executors"] = cfg.Executors
+	}
+	if cfg.Parameters != nil {
+		m["parameters"] = cfg.Parameters
 	}
 	return m, nil
 }
@@ -241,6 +245,7 @@ func mergeConfig(base, child Config) Config {
 	base.Jobs = mergeMap(base.Jobs, child.Jobs)
 	base.Commands = mergeMap(base.Commands, child.Commands)
 	base.Executors = mergeMap(base.Executors, child.Executors)
+	base.Parameters = mergeMap(base.Parameters, child.Parameters)
 	return base
 }
 
