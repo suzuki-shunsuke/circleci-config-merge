@@ -56,13 +56,12 @@ func TestWorkflows_MasharlYAML(t *testing.T) {
 	t.Parallel()
 	data := []struct {
 		title string
-		wfs   controller.Workflows
-		isErr bool
+		wfs   *controller.Workflows
 		exp   interface{}
 	}{
 		{
 			title: "normal",
-			wfs: controller.Workflows{
+			wfs: &controller.Workflows{
 				Version: "2.1",
 				Workflows: map[string]controller.Workflow{
 					"build": {
@@ -72,27 +71,23 @@ func TestWorkflows_MasharlYAML(t *testing.T) {
 					},
 				},
 			},
-			exp: map[string]interface{}{
-				"version": "2.1",
-				"build": controller.Workflow{
-					Jobs: []interface{}{
-						"foo",
-					},
-				},
-			},
+			exp: `
+version: "2.1"
+build:
+  jobs:
+  - foo
+`,
 		},
 	}
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
-			b, err := d.wfs.MarshalYAML()
-			if d.isErr {
-				require.NotNil(t, err)
-				return
-			}
+			diff, err := testMarshalYAML(d.exp, d.wfs)
 			require.Nil(t, err)
-			require.Equal(t, d.exp, b)
+			if diff != "" {
+				t.Fatal(diff)
+			}
 		})
 	}
 }

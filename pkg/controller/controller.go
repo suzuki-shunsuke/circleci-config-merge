@@ -35,7 +35,7 @@ func (ctrl *Controller) Run(ctx context.Context, params *Params) error {
 		}
 		cfg.Workflows.Workflows[k] = workflow
 	}
-	if err := yaml.NewEncoder(ctrl.Stdout).Encode(cfg); err != nil {
+	if err := yaml.NewEncoder(ctrl.Stdout).Encode(&cfg); err != nil {
 		return fmt.Errorf("encode a merged config as YAML: %w", err)
 	}
 	return nil
