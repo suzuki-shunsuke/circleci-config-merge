@@ -54,7 +54,7 @@ func (cfg *Config) MarshalYAML() (interface{}, error) {
 	if cfg.Orbs != nil {
 		m["orbs"] = cfg.Orbs
 	}
-	m["workflows"] = &cfg.Workflows
+	m["workflows"] = &(cfg.Workflows)
 	if cfg.Jobs != nil {
 		m["jobs"] = cfg.Jobs
 	}
