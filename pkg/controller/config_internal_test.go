@@ -10,13 +10,13 @@ func Test_mergeConfig(t *testing.T) {
 	t.Parallel()
 	data := []struct {
 		title string
-		exp   Config
-		base  Config
-		child Config
+		exp   *Config
+		base  *Config
+		child *Config
 	}{
 		{
 			title: "normal",
-			exp: Config{
+			exp: &Config{
 				Version: "2.0",
 				Workflows: &Workflows{
 					Workflows: map[string]*Workflow{
@@ -29,7 +29,7 @@ func Test_mergeConfig(t *testing.T) {
 					},
 				},
 			},
-			base: Config{
+			base: &Config{
 				Version: "2.0",
 				Workflows: &Workflows{
 					Workflows: map[string]*Workflow{
@@ -41,7 +41,7 @@ func Test_mergeConfig(t *testing.T) {
 					},
 				},
 			},
-			child: Config{
+			child: &Config{
 				Version: "2.0",
 				Workflows: &Workflows{
 					Workflows: map[string]*Workflow{

@@ -20,11 +20,15 @@ func New(ctx context.Context, params Params) (Controller, Params, error) {
 }
 
 func (ctrl *Controller) Run(ctx context.Context, params *Params) error {
-	cfg := Config{}
+	var cfg *Config
 	for filePath := range params.Files {
-		child := Config{}
-		if err := readFile(filePath, &child); err != nil {
+		child := &Config{}
+		if err := readFile(filePath, child); err != nil {
 			return fmt.Errorf("read a file "+filePath+": %w", err)
+		}
+		if cfg == nil {
+			cfg = child
+			continue
 		}
 		cfg = mergeConfig(cfg, child)
 	}
