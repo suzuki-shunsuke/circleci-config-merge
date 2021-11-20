@@ -12,6 +12,12 @@ type Workflows struct {
 }
 
 func mergeWorkflows(base, child *Workflows) *Workflows {
+	if base == nil {
+		return child
+	}
+	if child == nil {
+		return base
+	}
 	if child.Version != nil {
 		base.Version = child.Version
 	}
