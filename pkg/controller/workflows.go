@@ -1,6 +1,8 @@
 package controller
 
 import (
+	"fmt"
+
 	"github.com/mitchellh/mapstructure"
 )
 
@@ -44,7 +46,7 @@ func (wfs *Workflows) MarshalYAML() (interface{}, error) {
 	return m, nil
 }
 
-func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error { //nolint:cyclop
+func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	m := map[string]interface{}{}
 	if err := unmarshal(&m); err != nil {
 		return err
@@ -55,7 +57,7 @@ func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error { /
 	}
 	wfMap := map[string]*Workflow{}
 	if err := mapstructure.Decode(m, &wfMap); err != nil {
-		return err
+		return fmt.Errorf("decode map to structure: %w", err)
 	}
 	wfs.Workflows = wfMap
 	return nil
