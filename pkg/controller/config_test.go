@@ -55,6 +55,7 @@ func TestConfig_MasharlYAML(t *testing.T) {
 					Version: "2",
 					Workflows: map[string]*controller.Workflow{
 						"build": {
+							When: "<< pipeline.parameters.run_integration_tests >>",
 							Jobs: []interface{}{
 								"foo", "bar",
 							},
@@ -79,6 +80,7 @@ orbs:
 workflows:
   version: "2"
   build:
+    when: << pipeline.parameters.run_integration_tests >>
     jobs:
     - foo
     - bar
