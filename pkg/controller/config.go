@@ -9,6 +9,7 @@ import (
 
 type Config struct {
 	Version    interface{}            `yaml:",omitempty"`
+	Setup      *bool                  `yaml:",omitempty"`
 	Orbs       map[string]interface{} `yaml:",omitempty"`
 	Workflows  *Workflows
 	Jobs       map[string]interface{} `yaml:",omitempty"`
@@ -32,6 +33,9 @@ func readFile(filePath string, cfg *Config) error {
 func mergeConfig(base, child *Config) *Config {
 	if child.Version != nil {
 		base.Version = child.Version
+	}
+	if child.Setup != nil {
+		base.Setup = child.Setup
 	}
 	base.Orbs = mergeMap(base.Orbs, child.Orbs)
 	base.Workflows = mergeWorkflows(base.Workflows, child.Workflows)
