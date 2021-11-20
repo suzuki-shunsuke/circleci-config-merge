@@ -29,7 +29,7 @@ func readFile(filePath string, cfg *Config) error {
 	return nil
 }
 
-func mergeConfig(base, child Config) Config {
+func mergeConfig(base, child *Config) *Config {
 	if child.Version != nil {
 		base.Version = child.Version
 	}
