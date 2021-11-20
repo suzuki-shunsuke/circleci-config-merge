@@ -5,8 +5,8 @@ import (
 )
 
 type Workflows struct {
-	Version   interface{}         `yaml:",omitempty"`
-	Workflows map[string]Workflow `yaml:",omitempty"`
+	Version   interface{}          `yaml:",omitempty"`
+	Workflows map[string]*Workflow `yaml:",omitempty"`
 }
 
 func mergeWorkflows(base, child *Workflows) *Workflows {
@@ -22,7 +22,7 @@ func mergeWorkflows(base, child *Workflows) *Workflows {
 			base.Workflows[k] = baseWorkflow
 		} else {
 			if base.Workflows == nil {
-				base.Workflows = map[string]Workflow{
+				base.Workflows = map[string]*Workflow{
 					k: childWorkflow,
 				}
 			} else {
@@ -53,7 +53,7 @@ func (wfs *Workflows) UnmarshalYAML(unmarshal func(interface{}) error) error { /
 		wfs.Version = version
 		delete(m, "version")
 	}
-	wfMap := map[string]Workflow{}
+	wfMap := map[string]*Workflow{}
 	if err := mapstructure.Decode(m, &wfMap); err != nil {
 		return err
 	}

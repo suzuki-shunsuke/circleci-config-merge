@@ -53,7 +53,7 @@ func TestConfig_MasharlYAML(t *testing.T) {
 				},
 				Workflows: &controller.Workflows{
 					Version: "2",
-					Workflows: map[string]controller.Workflow{
+					Workflows: map[string]*controller.Workflow{
 						"build": {
 							Jobs: []interface{}{
 								"foo", "bar",

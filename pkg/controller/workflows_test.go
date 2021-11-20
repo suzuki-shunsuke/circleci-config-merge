@@ -20,7 +20,7 @@ func TestWorkflows_UnmasharlYAML(t *testing.T) {
 			title: "normal",
 			exp: controller.Workflows{
 				Version: "2.1",
-				Workflows: map[string]controller.Workflow{
+				Workflows: map[string]*controller.Workflow{
 					"build": {
 						Jobs: []interface{}{
 							"foo",
@@ -63,7 +63,7 @@ func TestWorkflows_MasharlYAML(t *testing.T) {
 			title: "normal",
 			wfs: &controller.Workflows{
 				Version: "2.1",
-				Workflows: map[string]controller.Workflow{
+				Workflows: map[string]*controller.Workflow{
 					"build": {
 						Jobs: []interface{}{
 							"foo",
