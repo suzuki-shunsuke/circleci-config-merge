@@ -51,9 +51,9 @@ func TestConfig_MasharlYAML(t *testing.T) {
 				Orbs: map[string]interface{}{
 					"foo": "circleci/hello-build@0.0.5",
 				},
-				Workflows: controller.Workflows{
+				Workflows: &controller.Workflows{
 					Version: "2",
-					Workflows: map[string]controller.Workflow{
+					Workflows: map[string]*controller.Workflow{
 						"build": {
 							Jobs: []interface{}{
 								"foo", "bar",

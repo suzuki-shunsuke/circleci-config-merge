@@ -11,35 +11,31 @@ func TestWorkflow_MasharlYAML(t *testing.T) {
 	t.Parallel()
 	data := []struct {
 		title string
-		wf    controller.Workflow
-		isErr bool
-		exp   interface{}
+		wf    *controller.Workflow
+		exp   string
 	}{
 		{
 			title: "normal",
-			wf: controller.Workflow{
+			wf: &controller.Workflow{
 				Jobs: []interface{}{
 					"foo",
 				},
 			},
-			exp: map[string]interface{}{
-				"jobs": []interface{}{
-					"foo",
-				},
-			},
+			exp: `
+jobs:
+- foo
+`,
 		},
 	}
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
-			b, err := d.wf.MarshalYAML()
-			if d.isErr {
-				require.NotNil(t, err)
-				return
-			}
+			diff, err := testMarshalYAML(d.exp, d.wf)
 			require.Nil(t, err)
-			require.Equal(t, d.exp, b)
+			if diff != "" {
+				t.Fatal(diff)
+			}
 		})
 	}
 }

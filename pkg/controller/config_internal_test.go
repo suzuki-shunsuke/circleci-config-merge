@@ -18,8 +18,8 @@ func Test_mergeConfig(t *testing.T) {
 			title: "normal",
 			exp: Config{
 				Version: "2.0",
-				Workflows: Workflows{
-					Workflows: map[string]Workflow{
+				Workflows: &Workflows{
+					Workflows: map[string]*Workflow{
 						"build": {
 							Jobs: []interface{}{
 								"foo",
@@ -31,8 +31,8 @@ func Test_mergeConfig(t *testing.T) {
 			},
 			base: Config{
 				Version: "2.0",
-				Workflows: Workflows{
-					Workflows: map[string]Workflow{
+				Workflows: &Workflows{
+					Workflows: map[string]*Workflow{
 						"build": {
 							Jobs: []interface{}{
 								"foo",
@@ -43,8 +43,8 @@ func Test_mergeConfig(t *testing.T) {
 			},
 			child: Config{
 				Version: "2.0",
-				Workflows: Workflows{
-					Workflows: map[string]Workflow{
+				Workflows: &Workflows{
+					Workflows: map[string]*Workflow{
 						"build": {
 							Jobs: []interface{}{
 								"bar",
