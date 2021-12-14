@@ -28,9 +28,13 @@ And we want to merge the list of workflow's jobs.
 Download from [GitHub Releases](https://github.com/suzuki-shunsuke/circleci-config-merge/releases).
 You can install circleci-config-merge with [Homebrew](https://brew.sh/) too.
 
-```
+```console
 $ brew install suzuki-shunsuke/circleci-config-merge/circleci-config-merge
 ```
+
+You can install circleci-config-merge with [aqua](https://aquaproj.github.io/) too.
+
+After installing circleci-config-merge, please check if it is installed properly.
 
 ```
 $ circleci-config-merge --version
