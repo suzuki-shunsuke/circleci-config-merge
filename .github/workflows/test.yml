@@ -12,7 +12,7 @@ jobs:
 
     - uses: aquaproj/aqua-installer@v0.6.0
       with:
-        aqua_version: v0.10.1
+        aqua_version: v0.10.2
 
     - name: golangci-lint
       run: golangci-lint run
