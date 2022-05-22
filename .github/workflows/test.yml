@@ -40,7 +40,7 @@ jobs:
       run: git fetch --prune --unshallow
 
     - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v2
+      uses: goreleaser/goreleaser-action@v3
       if: startsWith(github.ref, 'refs/tags/')
       with:
         version: latest
@@ -50,7 +50,7 @@ jobs:
         HOMEBREW_TAP_GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
     - name: Run GoReleaser (skip publish)
-      uses: goreleaser/goreleaser-action@v2
+      uses: goreleaser/goreleaser-action@v3
       if: "! startsWith(github.ref, 'refs/tags/')"
       with:
         version: latest
