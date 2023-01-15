@@ -13,3 +13,6 @@ linters:
   - godox
   - golint
   - exhaustivestruct # https://github.com/mbilski/exhaustivestruct
+  - exhaustruct
+  - varnamelen
+  - tagliatelle
