@@ -93,6 +93,74 @@ executors:
   golang: {}
 `,
 		},
+		{
+			title: "logical statement",
+			// https://circleci.com/docs/configuration-reference/#logic-statement-examples
+			cfg: &controller.Config{
+				Version: "2.1",
+				Orbs: map[string]interface{}{
+					"foo": "circleci/hello-build@0.0.5",
+				},
+				Workflows: &controller.Workflows{
+					Version: "2",
+					Workflows: map[string]*controller.Workflow{
+						"build": {
+							When: map[interface{}]interface{}{
+								"or": []map[interface{}]interface{}{
+									{
+										"equal": []interface{}{
+											"main",
+											"<< pipeline.git.branch >>",
+										},
+									},
+									{
+										"equal": []interface{}{
+											"staging",
+											"<< pipeline.git.branch >>",
+										},
+									},
+								},
+							},
+							Jobs: []interface{}{
+								"foo", "bar",
+							},
+						},
+					},
+				},
+				Jobs: map[string]interface{}{
+					"foo": map[string]interface{}{},
+					"bar": map[string]interface{}{},
+				},
+				Commands: map[string]interface{}{
+					"test": map[string]interface{}{},
+				},
+				Executors: map[string]interface{}{
+					"golang": map[string]interface{}{},
+				},
+			},
+			exp: `
+version: "2.1"
+orbs:
+  foo: circleci/hello-build@0.0.5
+workflows:
+  version: "2"
+  build:
+    when:
+      or:
+        - equal: [ main, << pipeline.git.branch >> ]
+        - equal: [ staging, << pipeline.git.branch >> ]
+    jobs:
+    - foo
+    - bar
+jobs:
+  foo: {}
+  bar: {}
+commands:
+  test: {}
+executors:
+  golang: {}
+`,
+		},
 	}
 	for _, d := range data {
 		d := d
