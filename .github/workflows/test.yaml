@@ -13,3 +13,5 @@ jobs:
     uses: suzuki-shunsuke/go-test-workflow/.github/workflows/test.yaml@feat/add-aqua_policy_config
     permissions:
       pull-requests: write
+    with:
+      aqua_policy_config: aqua-policy.yaml
