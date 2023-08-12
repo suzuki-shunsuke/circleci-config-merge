@@ -13,6 +13,10 @@ builds:
       - arm64
 release:
   prerelease: true
+archives:
+  - format_overrides:
+      - goos: windows
+        format: zip
 brews:
   -
     # NOTE: make sure the url_template, the token and given repo (github or gitlab) owner and name are from the
