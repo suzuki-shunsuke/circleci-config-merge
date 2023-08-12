@@ -74,6 +74,8 @@ winget:
     short_description: Generate .circleci/config.yml by merging multiple files
     license: mit
 
+    package_identifier: suzuki-shunsuke.circleci-config-merge
+
     # Publisher URL.
     #
     # Templates: allowed
