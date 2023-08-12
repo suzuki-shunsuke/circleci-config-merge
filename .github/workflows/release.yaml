@@ -6,12 +6,13 @@ on:
 permissions: {}
 jobs:
   release:
-    uses: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml@8e5a34c2b4e3c2a7d5e22346ef8328d2c3d0713e # v0.4.3
+    uses: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml@feat/chocolatey
     with:
       homebrew: true
     secrets:
       gh_app_id: ${{secrets.APP_ID}}
       gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+      winget_github_token: ${{secrets.MINICORE_ACCESS_TOKEN}}
     permissions:
       contents: write
       id-token: write
