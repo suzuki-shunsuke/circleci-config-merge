@@ -151,7 +151,7 @@ winget:
     # Release notes URL.
     #
     # Templates: allowed
-    release_notes_url: https://github.com/suzuki-shunsuke/circleci-config-merge/releases/tag/{{.Version}}
+    release_notes_url: https://github.com/suzuki-shunsuke/circleci-config-merge/releases/tag/{{.Tag}}
 
     # Tags.
     tags:
