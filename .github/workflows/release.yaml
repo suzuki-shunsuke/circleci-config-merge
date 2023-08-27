@@ -6,14 +6,18 @@ on:
 permissions: {}
 jobs:
   release:
-    uses: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml@8e5a34c2b4e3c2a7d5e22346ef8328d2c3d0713e # v0.4.3
+    uses: suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml@feat/chocolatey
     with:
       homebrew: true
       go-version: 1.21.0
       aqua_version: v2.10.1
+      winget_base_repo: microsoft/winget-pkgs
+      winget_head_repo: suzuki-shunsuke/winget-pkgs
+      winget_new: true
     secrets:
       gh_app_id: ${{secrets.APP_ID}}
       gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+      pr_github_token: ${{secrets.WINGET_ACCESS_TOKEN}}
     permissions:
       contents: write
       id-token: write
