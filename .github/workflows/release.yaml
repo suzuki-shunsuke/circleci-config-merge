@@ -12,7 +12,7 @@ jobs:
       aqua_version: v2.10.1
       winget_base_repo: microsoft/winget-pkgs
       winget_head_repo: suzuki-shunsuke/winget-pkgs
-      winget_new: true
+      winget_new: false
     secrets:
       gh_app_id: ${{secrets.APP_ID}}
       gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
