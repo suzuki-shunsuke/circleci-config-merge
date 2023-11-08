@@ -16,7 +16,8 @@ jobs:
     secrets:
       gh_app_id: ${{secrets.APP_ID}}
       gh_app_private_key: ${{secrets.APP_PRIVATE_KEY}}
-      pr_github_token: ${{secrets.WINGET_ACCESS_TOKEN}}
+      github_token_for_winget: ${{secrets.WINGET_ACCESS_TOKEN}}
+      chocolatey_api_key: ${{secrets.CHOCOLATEY_API_KEY}}
     permissions:
       contents: write
       id-token: write
