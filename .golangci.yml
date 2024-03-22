@@ -23,4 +23,3 @@ linters:
   - tagliatelle
   - depguard
   - musttag
-
