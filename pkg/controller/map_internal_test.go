@@ -29,7 +29,6 @@ func Test_mergeMap(t *testing.T) {
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			m := mergeMap(d.base, d.child)

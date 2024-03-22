@@ -21,11 +21,11 @@ type Config struct {
 func readFile(filePath string, cfg *Config) error {
 	file, err := os.Open(filePath)
 	if err != nil {
-		return fmt.Errorf("open a file "+filePath+": %w", err)
+		return fmt.Errorf("open a file %s: %w", filePath, err)
 	}
 	defer file.Close()
 	if err := yaml.NewDecoder(file).Decode(cfg); err != nil {
-		return fmt.Errorf("parse a file as YAML "+filePath+": %w", err)
+		return fmt.Errorf("parse a file as YAML %s: %w", filePath, err)
 	}
 	return nil
 }
