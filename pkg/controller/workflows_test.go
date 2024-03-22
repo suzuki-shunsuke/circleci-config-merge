@@ -37,16 +37,15 @@ build:
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			wfs := controller.Workflows{}
 			err := yaml.Unmarshal(d.yaml, &wfs)
 			if d.isErr {
-				require.NotNil(t, err)
+				require.Error(t, err)
 				return
 			}
-			require.Nil(t, err)
+			require.NoError(t, err)
 			require.Equal(t, d.exp, wfs)
 		})
 	}
@@ -82,11 +81,10 @@ build:
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			diff, err := testMarshalYAML(d.exp, d.wfs)
-			require.Nil(t, err)
+			require.NoError(t, err)
 			if diff != "" {
 				t.Fatal(diff)
 			}

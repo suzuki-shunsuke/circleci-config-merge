@@ -12,14 +12,14 @@ type Params struct {
 	Files map[string]struct{}
 }
 
-func New(ctx context.Context, params Params) (Controller, Params, error) {
+func New(_ context.Context, params Params) (Controller, Params, error) {
 	return Controller{
 		Stdout: os.Stdout,
 		Stderr: os.Stderr,
 	}, params, nil
 }
 
-func (ctrl *Controller) Run(ctx context.Context, params *Params) error {
+func (ctrl *Controller) Run(_ context.Context, params *Params) error {
 	var cfg *Config
 	for filePath := range params.Files {
 		child := &Config{}

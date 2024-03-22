@@ -1,33 +1,33 @@
 {
   "checksums": [
     {
-      "id": "github_release/github.com/golangci/golangci-lint/v1.50.1/golangci-lint-1.50.1-darwin-amd64.tar.gz",
-      "checksum": "0f615fb8c364f6e4a213f2ed2ff7aa1fc2b208addf29511e89c03534067bbf57",
+      "id": "github_release/github.com/golangci/golangci-lint/v1.57.1/golangci-lint-1.57.1-darwin-amd64.tar.gz",
+      "checksum": "7B6CE262D6B318822AD6AD866DA31A7E0E8F8042EC2B1A34018488532D9BEB50",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/golangci/golangci-lint/v1.50.1/golangci-lint-1.50.1-darwin-arm64.tar.gz",
-      "checksum": "3ca9753d7804b34f9165427fbe339dbea69bd80be8a10e3f02c6037393b2e1c4",
+      "id": "github_release/github.com/golangci/golangci-lint/v1.57.1/golangci-lint-1.57.1-darwin-arm64.tar.gz",
+      "checksum": "0099453F7F9EDF7438C848D2F1CEBFE8BD2FE8EF8817BA89C315127CCDDDDEE4",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/golangci/golangci-lint/v1.50.1/golangci-lint-1.50.1-linux-amd64.tar.gz",
-      "checksum": "4ba1dc9dbdf05b7bdc6f0e04bdfe6f63aa70576f51817be1b2540bbce017b69a",
+      "id": "github_release/github.com/golangci/golangci-lint/v1.57.1/golangci-lint-1.57.1-linux-amd64.tar.gz",
+      "checksum": "7E148DF10DE55DCBDA283B43B9EA1C2F2A38B6E96BA91A71EC02EEFCF336EFBE",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/golangci/golangci-lint/v1.50.1/golangci-lint-1.50.1-linux-arm64.tar.gz",
-      "checksum": "3ea0a6d5946340f6831646e2c67a317dd9b35bdc4e09b2df953a86f09ba05d74",
+      "id": "github_release/github.com/golangci/golangci-lint/v1.57.1/golangci-lint-1.57.1-linux-arm64.tar.gz",
+      "checksum": "55708F17C659D1B4589FE2B2F6C1D5528F5E3D9376D6E26D4AE266346D035D06",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/golangci/golangci-lint/v1.50.1/golangci-lint-1.50.1-windows-amd64.zip",
-      "checksum": "8c2da214884db02fb7f3d929672c515ae3b9d10defad4dd661c4ab365a316d68",
+      "id": "github_release/github.com/golangci/golangci-lint/v1.57.1/golangci-lint-1.57.1-windows-amd64.zip",
+      "checksum": "7383A7DC7498AD4D0500FF6E661E50236216089CF68460F665553B9484C41601",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/golangci/golangci-lint/v1.50.1/golangci-lint-1.50.1-windows-arm64.zip",
-      "checksum": "7fd52d1da270fa8448c975d2500b6ef2d19db143b6cfc205de16612d6f4effa9",
+      "id": "github_release/github.com/golangci/golangci-lint/v1.57.1/golangci-lint-1.57.1-windows-arm64.zip",
+      "checksum": "7B2429923A74E9501D3E350E789F5032A36D604C5B1677959B3970DA48858191",
       "algorithm": "sha256"
     },
     {
@@ -131,28 +131,28 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/sigstore/cosign/v1.13.2/cosign-darwin-amd64",
-      "checksum": "5A77CF6F5411AC8038F3DD2EB96E54E879026F6038A5D6A385DE2351E17F34EF",
+      "id": "github_release/github.com/sigstore/cosign/v2.2.3/cosign-darwin-amd64",
+      "checksum": "2429F4B027FC311A6324E9DB6FB3A937D559DC61DE906A1C2D0D1E0671685E4C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/sigstore/cosign/v1.13.2/cosign-darwin-arm64",
-      "checksum": "68703D61A1E8006E4EBEF4222B82C1214DF446795FF39CD081CA5D59384A5A60",
+      "id": "github_release/github.com/sigstore/cosign/v2.2.3/cosign-darwin-arm64",
+      "checksum": "3D95AB46D4C4CC55E6465758C238DC03F830CC8A1FC38BC7A33BC203E0FB2C3B",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/sigstore/cosign/v1.13.2/cosign-linux-amd64",
-      "checksum": "9B0F52ABB2E6D79529F37646E524A35A409DC811D2CDEC7EF5BE2DC5130489C0",
+      "id": "github_release/github.com/sigstore/cosign/v2.2.3/cosign-linux-amd64",
+      "checksum": "F669F41176CB1D58BB6A3FDB06E24861540CFDB5A571B4EC5EB2218B0DF5D304",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/sigstore/cosign/v1.13.2/cosign-linux-arm64",
-      "checksum": "3C109B66788686DD81F3E445439215532A8BB3E14A54EFB6B65382B0E3578F5E",
+      "id": "github_release/github.com/sigstore/cosign/v2.2.3/cosign-linux-arm64",
+      "checksum": "B088D676F0C0123B8C348E18D421CF966020EDC4977A486115A12643DEA99A3F",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/sigstore/cosign/v1.13.2/cosign-windows-amd64.exe",
-      "checksum": "F16868B69C85BBA30CBAF023885398A2A258002BAABB0709CCE1D60491171765",
+      "id": "github_release/github.com/sigstore/cosign/v2.2.3/cosign-windows-amd64.exe",
+      "checksum": "F7F272D56C580B0EC96F59BFE9F88EC5F42B6E195DF009CE3417428E0E0DEAD1",
       "algorithm": "sha256"
     },
     {
@@ -216,9 +216,9 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.154.0/registry.yaml",
-      "checksum": "8DD34CC8E818D5B85DC29610AB7BCC758A01B269B3B94D6FBEF94F91D0D6D9CCBAE6A71AD06EC58B0EC93144FCD168CDA43CB3C4D5756A89BFA9B1CC7C56040A",
-      "algorithm": "sha512"
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.155.0/registry.yaml",
+      "checksum": "8D328C01EB7752D6900D21876BC2E73197BE7EA82A6760ED1C8DB369F08149F9",
+      "algorithm": "sha256"
     }
   ]
 }

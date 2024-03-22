@@ -163,11 +163,10 @@ executors:
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			diff, err := testMarshalYAML(d.exp, d.cfg)
-			require.Nil(t, err)
+			require.NoError(t, err)
 			if diff != "" {
 				t.Fatal(diff)
 			}

@@ -32,15 +32,14 @@ func Test_getJobName(t *testing.T) {
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			name, err := getJobName(d.job)
 			if d.isErr {
-				require.NotNil(t, err)
+				require.Error(t, err)
 				return
 			}
-			require.Nil(t, err)
+			require.NoError(t, err)
 			require.Equal(t, d.exp, name)
 		})
 	}
@@ -90,15 +89,14 @@ func Test_sortJobs(t *testing.T) {
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			jobs, err := sortJobs(d.jobs)
 			if d.isErr {
-				require.NotNil(t, err)
+				require.Error(t, err)
 				return
 			}
-			require.Nil(t, err)
+			require.NoError(t, err)
 			require.Equal(t, d.exp, jobs)
 		})
 	}

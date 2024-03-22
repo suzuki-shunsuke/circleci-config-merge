@@ -56,7 +56,6 @@ func Test_mergeConfig(t *testing.T) {
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			m := mergeConfig(d.base, d.child)

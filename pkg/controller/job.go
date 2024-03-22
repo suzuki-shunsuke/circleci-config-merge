@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"errors"
 	"fmt"
 	"sort"
 )
@@ -24,9 +25,9 @@ func getJobName(job interface{}) (string, error) {
 			}
 			return s, nil
 		}
-		return "", fmt.Errorf("workflow job's element is empty")
+		return "", errors.New("workflow job's element is empty")
 	default:
-		return "", fmt.Errorf("workflow job must be string or map")
+		return "", errors.New("workflow job must be string or map")
 	}
 }
 

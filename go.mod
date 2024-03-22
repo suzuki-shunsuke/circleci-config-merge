@@ -1,6 +1,6 @@
 module github.com/suzuki-shunsuke/circleci-config-merge
 
-go 1.19
+go 1.22
 
 require (
 	github.com/google/go-cmp v0.6.0
