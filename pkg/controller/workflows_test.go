@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 	"github.com/suzuki-shunsuke/circleci-config-merge/pkg/controller"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 func TestWorkflows_UnmasharlYAML(t *testing.T) {
