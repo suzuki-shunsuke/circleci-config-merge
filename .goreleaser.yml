@@ -1,4 +1,5 @@
 ---
+version: 2
 builds:
   - binary: circleci-config-merge
     main: cmd/circleci-config-merge/main.go
